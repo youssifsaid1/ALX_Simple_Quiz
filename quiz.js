@@ -1,48 +1,21 @@
-body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
+function checkAnswer() {
+    // 1. Identify the correct answer
+    const correctAnswer = "4";
+
+    // 2. Retrieve the user’s selected answer
+    const selectedOption = document.querySelector('input[name="quiz"]:checked');
+    const userAnswer = selectedOption ? selectedOption.value : "";
+
+    // 3. Compare the user’s answer with the correct answer
+    const feedback = document.getElementById("feedback");
+    if (userAnswer === correctAnswer) {
+        // 4. Provide feedback if correct
+        feedback.textContent = "Correct! Well done.";
+    } else {
+        // 5. Provide feedback if incorrect
+        feedback.textContent = "That's incorrect. Try again!";
+    }
 }
 
-#quiz-container {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-#quiz-question {
-    font-size: 20px;
-    margin-bottom: 20px;
-}
-
-input[type="radio"] {
-    margin-right: 10px;
-}
-
-label {
-    margin-right: 30px;
-    cursor: pointer;
-}
-
-#submit-answer {
-    display: block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-#submit-answer:hover {
-    background-color: #0056b3;
-}
-
-#feedback {
-    margin-top: 20px;
-    font-size: 18px;
-}
+// 6. Add event listener to the “Submit Answer” button
+document.getElementById("submit-answer").addEventListener("click", checkAnswer);
